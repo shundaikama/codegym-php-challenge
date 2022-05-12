@@ -3,9 +3,7 @@ require_once('db.php');
 require_once('functions.php');
 
 
-require_once('db.php');
-$t = getTweet($_GET['id']);
-$t=$t[0];
+$t = getTweet($_GET['id'])[0];
 
 ?>
 

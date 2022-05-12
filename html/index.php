@@ -34,11 +34,12 @@ if ($_POST) { /* POST Requests */
     if (isset($_POST['logout'])) { //ログアウト処理
         logout();
         header("Location: login.php");
-    } elseif (isset($_POST['reply_post_id'])) { //返信処理
-        newReplyTweet($_POST['tweet_textarea'], $_SESSION['user_id'], $_POST['reply_post_id']);
-        header("Location: index.php");
-    } elseif (isset($_POST['tweet_textarea'])) { //投稿処理
-        newtweet($_POST['tweet_textarea']);
+    } elseif (isset($_POST['tweet_textarea'])) {
+        if (isset($_POST['reply_post_id'])) {//返信処理
+            newReplyTweet($_POST['tweet_textarea'], $_SESSION['user_id'], $_POST['reply_post_id']);
+        } else { // 投稿処理
+            newtweet($_POST['tweet_textarea']);
+        }
         header("Location: index.php");
     }
 }
